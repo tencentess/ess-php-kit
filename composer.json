@@ -1,0 +1,5 @@
+{
+    "require": {
+        "tencentcloud/ess": "^3.0"
+    }
+}
