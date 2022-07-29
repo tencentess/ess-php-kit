@@ -133,13 +133,15 @@ function BuildComponent($componentPosX, $componentPosY, $componentWidth, $compon
     // 控件所属文件的序号（取值为：0-N）
     $component->setFileIndex($fileIndex);
     // 如果是 Component 控件类型，则可选类型为：
-    // TEXT - 内容文本控件
-    // DATE - 内容日期控件
-    // CHECK_BOX - 勾选框控件
+    // TEXT - 单行文本
+    // MULTI_LINE_TEXT - 多行文本
+    // CHECK_BOX - 勾选框
+    // ATTACHMENT - 附件
+    // SELECTOR - 选择器
     // 如果是 SignComponent 控件类型，则可选类型为：
-    // SIGN_SEAL - 签署印章控件
+    // SIGN_SEAL - 签署印章控件，静默签署时需要传入印章id作为ComponentValue
     // SIGN_DATE - 签署日期控件
-    // SIGN_SIGNATURE - 手写签名控件
+    // SIGN_SIGNATURE - 手写签名控件，静默签署时不能使用
     $component->setComponentType($componentType);
     // 参数控件所在页码，取值为：1-N
     $component->setComponentPage($componentPage);

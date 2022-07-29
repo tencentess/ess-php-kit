@@ -8,7 +8,7 @@ use TencentCloud\Ess\V20201111\Models\CreateDocumentRequest;
 
 // 创建电子文档
 // 适用场景：见创建签署流程接口。注：该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。是“发起流程”接口的前置接口。
-function CreateDocument($operatorUserId, $flowId, $templateId, $fliename) {
+function CreateDocument($operatorUserId, $flowId, $templateId, $fileName) {
     // 构造客户端调用实例
     $client = GetClientInstance(Config::secretId, Config::secretKey, Config::endPoint);
 
@@ -22,7 +22,7 @@ function CreateDocument($operatorUserId, $flowId, $templateId, $fliename) {
 
     // 文件名列表,单个文件名最大长度200个字符
     $req->FileNames = [];
-    array_push($req->FileNames, $fliename);
+    array_push($req->FileNames, $fileName);
 
     // 签署流程编号,由CreateFlow接口返回
     $req->setFlowId($flowId);
