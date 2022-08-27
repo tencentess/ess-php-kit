@@ -22,7 +22,7 @@ function DescribeFlowTemplates($operatorUserId, $templateId) {
     $userInfo->setUserId($operatorUserId);
     $req->setOperator($userInfo);
 
-    // 需要查询的流程ID列表
+    // 需要查询的模板ID列表
     $filter = new Filter();
     $filter->setKey("template-id");  // 查询过滤条件的Key
     $filter->setValues(array($templateId,)); // 查询过滤条件的Value列表

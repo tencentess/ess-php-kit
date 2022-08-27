@@ -470,11 +470,11 @@
         },
         {
             "name": "tencentcloud/common",
-            "version": "3.0.678",
+            "version": "3.0.669",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/tencentcloud/common/3.0.678/tencentcloud-common-3.0.678.zip",
-                "reference": "9004fe4f7c237f0246234a6417c39230c22b7864",
+                "url": "https://mirrors.tencent.com/repository/composer/tencentcloud/common/3.0.669/tencentcloud-common-3.0.669.zip",
+                "reference": "f9f14ab2cb2c6c31ab9c29828d505ef80b0cd9e2",
                 "shasum": ""
             },
             "require": {
@@ -500,19 +500,19 @@
             ],
             "description": "TencentCloudApi php sdk",
             "homepage": "https://github.com/tencentcloud-sdk-php/common",
-            "time": "2022-07-24T23:16:48+00:00"
+            "time": "2022-07-11T23:13:14+00:00"
         },
         {
             "name": "tencentcloud/ess",
-            "version": "3.0.678",
+            "version": "3.0.669",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/tencentcloud/ess/3.0.678/tencentcloud-ess-3.0.678.zip",
-                "reference": "dbd1ea73f1a756b8984afc8de3e06f8e1ebcfeed",
+                "url": "https://mirrors.tencent.com/repository/composer/tencentcloud/ess/3.0.669/tencentcloud-ess-3.0.669.zip",
+                "reference": "ebb7762f10d6d165aacc6bb3719eaa9bd243b147",
                 "shasum": ""
             },
             "require": {
-                "tencentcloud/common": "3.0.678"
+                "tencentcloud/common": "3.0.669"
             },
             "type": "library",
             "autoload": {
@@ -533,7 +533,7 @@
             ],
             "description": "TencentCloudApi php sdk ess",
             "homepage": "https://github.com/tencentcloud-sdk-php/ess",
-            "time": "2022-07-24T23:21:41+00:00"
+            "time": "2022-07-11T23:18:11+00:00"
         }
     ],
     "packages-dev": [],

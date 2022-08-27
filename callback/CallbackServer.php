@@ -189,7 +189,7 @@ class Approver
     public $ApproverType;
 
     /**
-     * @var string 企业或者个人的名字。
+     * @var string 企业名字。
      */
     public $OrganizationName;
 
@@ -217,7 +217,7 @@ class Approver
     public $ApproverIdCardType;
 
     /**
-     * @var string 签署人证件类型。
+     * @var string 签署人证件号码。
      */
     public $ApproverIdCardNumber;
 
