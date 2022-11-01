@@ -20,26 +20,32 @@ use TencentCloud\Common\AbstractModel;
 /**
  * CreateFlowByFiles请求参数结构体
  *
+ * @method UserInfo getOperator() 获取调用方用户信息，userId 必填
+ * @method void setOperator(UserInfo $Operator) 设置调用方用户信息，userId 必填
  * @method string getFlowName() 获取签署流程名称,最大长度200个字符
  * @method void setFlowName(string $FlowName) 设置签署流程名称,最大长度200个字符
- * @method array getApprovers() 获取签署参与者信息
- * @method void setApprovers(array $Approvers) 设置签署参与者信息
- * @method array getFileIds() 获取签署pdf文件的资源编号列表，通过UploadFiles接口获取
- * @method void setFileIds(array $FileIds) 设置签署pdf文件的资源编号列表，通过UploadFiles接口获取
- * @method UserInfo getOperator() 获取调用方用户信息
- * @method void setOperator(UserInfo $Operator) 设置调用方用户信息
- * @method Agent getAgent() 获取应用号信息
- * @method void setAgent(Agent $Agent) 设置应用号信息
- * @method array getComponents() 获取经办人内容控件配置。可选类型为：
-TEXT - 内容文本控件
-MULTI_LINE_TEXT - 多行文本控件
-CHECK_BOX - 勾选框控件
-注：默认字体大小为 字号12
- * @method void setComponents(array $Components) 设置经办人内容控件配置。可选类型为：
-TEXT - 内容文本控件
-MULTI_LINE_TEXT - 多行文本控件
-CHECK_BOX - 勾选框控件
-注：默认字体大小为 字号12
+ * @method array getApprovers() 获取签署参与者信息，最大限制50方
+ * @method void setApprovers(array $Approvers) 设置签署参与者信息，最大限制50方
+ * @method array getFileIds() 获取签署pdf文件的资源编号列表，通过UploadFiles接口获取，暂时仅支持单文件发起
+ * @method void setFileIds(array $FileIds) 设置签署pdf文件的资源编号列表，通过UploadFiles接口获取，暂时仅支持单文件发起
+ * @method string getFlowType() 获取签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
+ * @method void setFlowType(string $FlowType) 设置签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
+ * @method array getComponents() 获取经办人内容控件配置
+ * @method void setComponents(array $Components) 设置经办人内容控件配置
+ * @method array getCcInfos() 获取被抄送人的信息列表。
+注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
+ * @method void setCcInfos(array $CcInfos) 设置被抄送人的信息列表。
+注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
+ * @method boolean getNeedPreview() 获取是否需要预览，true：预览模式，false：非预览（默认）；
+预览链接有效期300秒；
+
+注：如果使用“预览模式”，出参会返回合同预览链接 PreviewUrl，不会正式发起合同，且出参不会返回签署流程编号 FlowId；如果使用“非预览”，则会正常返回签署流程编号 FlowId，不会生成合同预览链接 PreviewUrl。
+ * @method void setNeedPreview(boolean $NeedPreview) 设置是否需要预览，true：预览模式，false：非预览（默认）；
+预览链接有效期300秒；
+
+注：如果使用“预览模式”，出参会返回合同预览链接 PreviewUrl，不会正式发起合同，且出参不会返回签署流程编号 FlowId；如果使用“非预览”，则会正常返回签署流程编号 FlowId，不会生成合同预览链接 PreviewUrl。
+ * @method string getFlowDescription() 获取签署流程描述,最大长度1000个字符
+ * @method void setFlowDescription(string $FlowDescription) 设置签署流程描述,最大长度1000个字符
  * @method integer getDeadline() 获取签署流程的签署截止时间。
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
  * @method void setDeadline(integer $Deadline) 设置签署流程的签署截止时间。
@@ -52,56 +58,69 @@ false：有序签
 true：无序签
 false：有序签
 注：默认为false（有序签）
- * @method boolean getNeedPreview() 获取是否需要预览，true：预览模式，false：非预览（默认）；
-预览链接有效期300秒；
- * @method void setNeedPreview(boolean $NeedPreview) 设置是否需要预览，true：预览模式，false：非预览（默认）；
-预览链接有效期300秒；
- * @method string getFlowDescription() 获取签署流程描述,最大长度1000个字符
- * @method void setFlowDescription(string $FlowDescription) 设置签署流程描述,最大长度1000个字符
- * @method string getFlowType() 获取签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
- * @method void setFlowType(string $FlowType) 设置签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
- * @method array getCcInfos() 获取被抄送人的信息列表。
-注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
- * @method void setCcInfos(array $CcInfos) 设置被抄送人的信息列表。
-注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
  * @method string getCustomShowMap() 获取合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
  * @method void setCustomShowMap(string $CustomShowMap) 设置合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
+ * @method boolean getNeedSignReview() 获取发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
+若设置为true，审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
+
+注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+ * @method void setNeedSignReview(boolean $NeedSignReview) 设置发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
+若设置为true，审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
+
+注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+ * @method Agent getAgent() 获取应用号信息
+ * @method void setAgent(Agent $Agent) 设置应用号信息
  */
 class CreateFlowByFilesRequest extends AbstractModel
 {
+    /**
+     * @var UserInfo 调用方用户信息，userId 必填
+     */
+    public $Operator;
+
     /**
      * @var string 签署流程名称,最大长度200个字符
      */
     public $FlowName;
 
     /**
-     * @var array 签署参与者信息
+     * @var array 签署参与者信息，最大限制50方
      */
     public $Approvers;
 
     /**
-     * @var array 签署pdf文件的资源编号列表，通过UploadFiles接口获取
+     * @var array 签署pdf文件的资源编号列表，通过UploadFiles接口获取，暂时仅支持单文件发起
      */
     public $FileIds;
 
     /**
-     * @var UserInfo 调用方用户信息
+     * @var string 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
      */
-    public $Operator;
+    public $FlowType;
 
     /**
-     * @var Agent 应用号信息
-     */
-    public $Agent;
-
-    /**
-     * @var array 经办人内容控件配置。可选类型为：
-TEXT - 内容文本控件
-MULTI_LINE_TEXT - 多行文本控件
-CHECK_BOX - 勾选框控件
-注：默认字体大小为 字号12
+     * @var array 经办人内容控件配置
      */
     public $Components;
+
+    /**
+     * @var array 被抄送人的信息列表。
+注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
+     */
+    public $CcInfos;
+
+    /**
+     * @var boolean 是否需要预览，true：预览模式，false：非预览（默认）；
+预览链接有效期300秒；
+
+注：如果使用“预览模式”，出参会返回合同预览链接 PreviewUrl，不会正式发起合同，且出参不会返回签署流程编号 FlowId；如果使用“非预览”，则会正常返回签署流程编号 FlowId，不会生成合同预览链接 PreviewUrl。
+     */
+    public $NeedPreview;
+
+    /**
+     * @var string 签署流程描述,最大长度1000个字符
+     */
+    public $FlowDescription;
 
     /**
      * @var integer 签署流程的签署截止时间。
@@ -118,56 +137,49 @@ false：有序签
     public $Unordered;
 
     /**
-     * @var boolean 是否需要预览，true：预览模式，false：非预览（默认）；
-预览链接有效期300秒；
-     */
-    public $NeedPreview;
-
-    /**
-     * @var string 签署流程描述,最大长度1000个字符
-     */
-    public $FlowDescription;
-
-    /**
-     * @var string 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
-     */
-    public $FlowType;
-
-    /**
-     * @var array 被抄送人的信息列表。
-注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
-     */
-    public $CcInfos;
-
-    /**
      * @var string 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
      */
     public $CustomShowMap;
 
     /**
+     * @var boolean 发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
+若设置为true，审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
+
+注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+     */
+    public $NeedSignReview;
+
+    /**
+     * @var Agent 应用号信息
+     */
+    public $Agent;
+
+    /**
+     * @param UserInfo $Operator 调用方用户信息，userId 必填
      * @param string $FlowName 签署流程名称,最大长度200个字符
-     * @param array $Approvers 签署参与者信息
-     * @param array $FileIds 签署pdf文件的资源编号列表，通过UploadFiles接口获取
-     * @param UserInfo $Operator 调用方用户信息
-     * @param Agent $Agent 应用号信息
-     * @param array $Components 经办人内容控件配置。可选类型为：
-TEXT - 内容文本控件
-MULTI_LINE_TEXT - 多行文本控件
-CHECK_BOX - 勾选框控件
-注：默认字体大小为 字号12
+     * @param array $Approvers 签署参与者信息，最大限制50方
+     * @param array $FileIds 签署pdf文件的资源编号列表，通过UploadFiles接口获取，暂时仅支持单文件发起
+     * @param string $FlowType 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
+     * @param array $Components 经办人内容控件配置
+     * @param array $CcInfos 被抄送人的信息列表。
+注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
+     * @param boolean $NeedPreview 是否需要预览，true：预览模式，false：非预览（默认）；
+预览链接有效期300秒；
+
+注：如果使用“预览模式”，出参会返回合同预览链接 PreviewUrl，不会正式发起合同，且出参不会返回签署流程编号 FlowId；如果使用“非预览”，则会正常返回签署流程编号 FlowId，不会生成合同预览链接 PreviewUrl。
+     * @param string $FlowDescription 签署流程描述,最大长度1000个字符
      * @param integer $Deadline 签署流程的签署截止时间。
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
      * @param boolean $Unordered 发送类型：
 true：无序签
 false：有序签
 注：默认为false（有序签）
-     * @param boolean $NeedPreview 是否需要预览，true：预览模式，false：非预览（默认）；
-预览链接有效期300秒；
-     * @param string $FlowDescription 签署流程描述,最大长度1000个字符
-     * @param string $FlowType 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
-     * @param array $CcInfos 被抄送人的信息列表。
-注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
      * @param string $CustomShowMap 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
+     * @param boolean $NeedSignReview 发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
+若设置为true，审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
+
+注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+     * @param Agent $Agent 应用号信息
      */
     function __construct()
     {
@@ -182,6 +194,11 @@ false：有序签
         if ($param === null) {
             return;
         }
+        if (array_key_exists("Operator",$param) and $param["Operator"] !== null) {
+            $this->Operator = new UserInfo();
+            $this->Operator->deserialize($param["Operator"]);
+        }
+
         if (array_key_exists("FlowName",$param) and $param["FlowName"] !== null) {
             $this->FlowName = $param["FlowName"];
         }
@@ -199,14 +216,8 @@ false：有序签
             $this->FileIds = $param["FileIds"];
         }
 
-        if (array_key_exists("Operator",$param) and $param["Operator"] !== null) {
-            $this->Operator = new UserInfo();
-            $this->Operator->deserialize($param["Operator"]);
-        }
-
-        if (array_key_exists("Agent",$param) and $param["Agent"] !== null) {
-            $this->Agent = new Agent();
-            $this->Agent->deserialize($param["Agent"]);
+        if (array_key_exists("FlowType",$param) and $param["FlowType"] !== null) {
+            $this->FlowType = $param["FlowType"];
         }
 
         if (array_key_exists("Components",$param) and $param["Components"] !== null) {
@@ -218,12 +229,13 @@ false：有序签
             }
         }
 
-        if (array_key_exists("Deadline",$param) and $param["Deadline"] !== null) {
-            $this->Deadline = $param["Deadline"];
-        }
-
-        if (array_key_exists("Unordered",$param) and $param["Unordered"] !== null) {
-            $this->Unordered = $param["Unordered"];
+        if (array_key_exists("CcInfos",$param) and $param["CcInfos"] !== null) {
+            $this->CcInfos = [];
+            foreach ($param["CcInfos"] as $key => $value){
+                $obj = new CcInfo();
+                $obj->deserialize($value);
+                array_push($this->CcInfos, $obj);
+            }
         }
 
         if (array_key_exists("NeedPreview",$param) and $param["NeedPreview"] !== null) {
@@ -234,21 +246,25 @@ false：有序签
             $this->FlowDescription = $param["FlowDescription"];
         }
 
-        if (array_key_exists("FlowType",$param) and $param["FlowType"] !== null) {
-            $this->FlowType = $param["FlowType"];
+        if (array_key_exists("Deadline",$param) and $param["Deadline"] !== null) {
+            $this->Deadline = $param["Deadline"];
         }
 
-        if (array_key_exists("CcInfos",$param) and $param["CcInfos"] !== null) {
-            $this->CcInfos = [];
-            foreach ($param["CcInfos"] as $key => $value){
-                $obj = new CcInfo();
-                $obj->deserialize($value);
-                array_push($this->CcInfos, $obj);
-            }
+        if (array_key_exists("Unordered",$param) and $param["Unordered"] !== null) {
+            $this->Unordered = $param["Unordered"];
         }
 
         if (array_key_exists("CustomShowMap",$param) and $param["CustomShowMap"] !== null) {
             $this->CustomShowMap = $param["CustomShowMap"];
+        }
+
+        if (array_key_exists("NeedSignReview",$param) and $param["NeedSignReview"] !== null) {
+            $this->NeedSignReview = $param["NeedSignReview"];
+        }
+
+        if (array_key_exists("Agent",$param) and $param["Agent"] !== null) {
+            $this->Agent = new Agent();
+            $this->Agent->deserialize($param["Agent"]);
         }
     }
 }

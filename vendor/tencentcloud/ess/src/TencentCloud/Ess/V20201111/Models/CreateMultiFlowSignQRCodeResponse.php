@@ -22,6 +22,8 @@ use TencentCloud\Common\AbstractModel;
  *
  * @method SignQrCode getQrCode() 获取签署二维码对象
  * @method void setQrCode(SignQrCode $QrCode) 设置签署二维码对象
+ * @method SignUrl getSignUrls() 获取签署链接对象
+ * @method void setSignUrls(SignUrl $SignUrls) 设置签署链接对象
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
@@ -33,12 +35,18 @@ class CreateMultiFlowSignQRCodeResponse extends AbstractModel
     public $QrCode;
 
     /**
+     * @var SignUrl 签署链接对象
+     */
+    public $SignUrls;
+
+    /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     public $RequestId;
 
     /**
      * @param SignQrCode $QrCode 签署二维码对象
+     * @param SignUrl $SignUrls 签署链接对象
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -57,6 +65,11 @@ class CreateMultiFlowSignQRCodeResponse extends AbstractModel
         if (array_key_exists("QrCode",$param) and $param["QrCode"] !== null) {
             $this->QrCode = new SignQrCode();
             $this->QrCode->deserialize($param["QrCode"]);
+        }
+
+        if (array_key_exists("SignUrls",$param) and $param["SignUrls"] !== null) {
+            $this->SignUrls = new SignUrl();
+            $this->SignUrls->deserialize($param["SignUrls"]);
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {
