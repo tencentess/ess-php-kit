@@ -172,12 +172,12 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.4.1",
-            "version_normalized": "2.4.1.0",
+            "version": "2.4.3",
+            "version_normalized": "2.4.3.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/guzzlehttp/psr7/2.4.1/guzzlehttp-psr7-2.4.1.zip",
-                "reference": "69568e4293f4fa993f3b0e51c9723e1e17c41379",
+                "url": "https://mirrors.tencent.com/repository/composer/guzzlehttp/psr7/2.4.3/guzzlehttp-psr7-2.4.3.zip",
+                "reference": "67c26b443f348a51926030c83481b85718457d3d",
                 "shasum": ""
             },
             "require": {
@@ -198,7 +198,7 @@
             "suggest": {
                 "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
             },
-            "time": "2022-08-28T14:45:39+00:00",
+            "time": "2022-10-26T14:07:24+00:00",
             "type": "library",
             "extra": {
                 "bamarni-bin": {
@@ -496,19 +496,19 @@
         },
         {
             "name": "tencentcloud/common",
-            "version": "3.0.750",
-            "version_normalized": "3.0.750.0",
+            "version": "3.0.762",
+            "version_normalized": "3.0.762.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/tencentcloud/common/3.0.750/tencentcloud-common-3.0.750.zip",
-                "reference": "079a2f01ee52ce28e666625075c5b7926ec4eaea",
+                "url": "https://mirrors.tencent.com/repository/composer/tencentcloud/common/3.0.762/tencentcloud-common-3.0.762.zip",
+                "reference": "e021cdadbb611e3172b6e25e6d8d783aa05d3caf",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.3||^7.0",
                 "php": ">=5.6.0"
             },
-            "time": "2022-10-25T00:19:44+00:00",
+            "time": "2022-11-09T00:16:32+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -533,18 +533,18 @@
         },
         {
             "name": "tencentcloud/ess",
-            "version": "3.0.750",
-            "version_normalized": "3.0.750.0",
+            "version": "3.0.762",
+            "version_normalized": "3.0.762.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/tencentcloud/ess/3.0.750/tencentcloud-ess-3.0.750.zip",
-                "reference": "2d7c9c47f6a68ecef1eadf688694bcd3b9fa1c88",
+                "url": "https://mirrors.tencent.com/repository/composer/tencentcloud/ess/3.0.762/tencentcloud-ess-3.0.762.zip",
+                "reference": "6c3d14596106a65b3237458563a44a7953bacdd1",
                 "shasum": ""
             },
             "require": {
-                "tencentcloud/common": "3.0.750"
+                "tencentcloud/common": "3.0.762"
             },
-            "time": "2022-10-25T00:25:54+00:00",
+            "time": "2022-11-09T00:22:17+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {

@@ -68,8 +68,18 @@ false：有序签
 若设置为true，审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
 
 注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+ * @method string getUserData() 获取用户自定义字段，回调的时候会进行透传，长度需要小于20480
+ * @method void setUserData(string $UserData) 设置用户自定义字段，回调的时候会进行透传，长度需要小于20480
  * @method Agent getAgent() 获取应用号信息
  * @method void setAgent(Agent $Agent) 设置应用号信息
+ * @method string getApproverVerifyType() 获取签署人校验方式
+VerifyCheck: 人脸识别（默认）
+MobileCheck：手机号验证
+参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
+ * @method void setApproverVerifyType(string $ApproverVerifyType) 设置签署人校验方式
+VerifyCheck: 人脸识别（默认）
+MobileCheck：手机号验证
+参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
  */
 class CreateFlowByFilesRequest extends AbstractModel
 {
@@ -150,9 +160,22 @@ false：有序签
     public $NeedSignReview;
 
     /**
+     * @var string 用户自定义字段，回调的时候会进行透传，长度需要小于20480
+     */
+    public $UserData;
+
+    /**
      * @var Agent 应用号信息
      */
     public $Agent;
+
+    /**
+     * @var string 签署人校验方式
+VerifyCheck: 人脸识别（默认）
+MobileCheck：手机号验证
+参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
+     */
+    public $ApproverVerifyType;
 
     /**
      * @param UserInfo $Operator 调用方用户信息，userId 必填
@@ -179,7 +202,12 @@ false：有序签
 若设置为true，审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
 
 注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+     * @param string $UserData 用户自定义字段，回调的时候会进行透传，长度需要小于20480
      * @param Agent $Agent 应用号信息
+     * @param string $ApproverVerifyType 签署人校验方式
+VerifyCheck: 人脸识别（默认）
+MobileCheck：手机号验证
+参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
      */
     function __construct()
     {
@@ -262,9 +290,17 @@ false：有序签
             $this->NeedSignReview = $param["NeedSignReview"];
         }
 
+        if (array_key_exists("UserData",$param) and $param["UserData"] !== null) {
+            $this->UserData = $param["UserData"];
+        }
+
         if (array_key_exists("Agent",$param) and $param["Agent"] !== null) {
             $this->Agent = new Agent();
             $this->Agent->deserialize($param["Agent"]);
+        }
+
+        if (array_key_exists("ApproverVerifyType",$param) and $param["ApproverVerifyType"] !== null) {
+            $this->ApproverVerifyType = $param["ApproverVerifyType"];
         }
     }
 }

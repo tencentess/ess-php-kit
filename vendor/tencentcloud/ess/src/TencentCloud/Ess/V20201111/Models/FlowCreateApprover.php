@@ -54,8 +54,8 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
  * @method void setIsFullText(boolean $IsFullText) 设置签署前置条件：是否需要阅读全文，默认为不需要
  * @method integer getPreReadTime() 获取签署前置条件：阅读时长限制，单位秒，默认为不需要
  * @method void setPreReadTime(integer $PreReadTime) 设置签署前置条件：阅读时长限制，单位秒，默认为不需要
- * @method string getUserId() 获取签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。非企微场景不使用此字段
- * @method void setUserId(string $UserId) 设置签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。非企微场景不使用此字段
+ * @method string getUserId() 获取签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。
+ * @method void setUserId(string $UserId) 设置签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。
  * @method boolean getRequired() 获取当前只支持true，默认为true
  * @method void setRequired(boolean $Required) 设置当前只支持true，默认为true
  * @method string getApproverSource() 获取签署人用户来源,企微侧用户请传入：WEWORKAPP
@@ -64,6 +64,8 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
  * @method void setCustomApproverTag(string $CustomApproverTag) 设置客户自定义签署人标识，64位长度，保证唯一。非企微场景不使用此字段
  * @method RegisterInfo getRegisterInfo() 获取快速注册相关信息，目前暂未开放！
  * @method void setRegisterInfo(RegisterInfo $RegisterInfo) 设置快速注册相关信息，目前暂未开放！
+ * @method ApproverOption getApproverOption() 获取签署人个性化能力值
+ * @method void setApproverOption(ApproverOption $ApproverOption) 设置签署人个性化能力值
  */
 class FlowCreateApprover extends AbstractModel
 {
@@ -129,7 +131,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
     public $PreReadTime;
 
     /**
-     * @var string 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。非企微场景不使用此字段
+     * @var string 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。
      */
     public $UserId;
 
@@ -154,6 +156,11 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
     public $RegisterInfo;
 
     /**
+     * @var ApproverOption 签署人个性化能力值
+     */
+    public $ApproverOption;
+
+    /**
      * @param integer $ApproverType 参与者类型：
 0：企业
 1：个人
@@ -171,11 +178,12 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
      * @param string $NotifyType 是否发送短信，sms--短信通知，none--不通知，默认为sms；发起方=签署方时不发送短信
      * @param boolean $IsFullText 签署前置条件：是否需要阅读全文，默认为不需要
      * @param integer $PreReadTime 签署前置条件：阅读时长限制，单位秒，默认为不需要
-     * @param string $UserId 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。非企微场景不使用此字段
+     * @param string $UserId 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。
      * @param boolean $Required 当前只支持true，默认为true
      * @param string $ApproverSource 签署人用户来源,企微侧用户请传入：WEWORKAPP
      * @param string $CustomApproverTag 客户自定义签署人标识，64位长度，保证唯一。非企微场景不使用此字段
      * @param RegisterInfo $RegisterInfo 快速注册相关信息，目前暂未开放！
+     * @param ApproverOption $ApproverOption 签署人个性化能力值
      */
     function __construct()
     {
@@ -253,6 +261,11 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         if (array_key_exists("RegisterInfo",$param) and $param["RegisterInfo"] !== null) {
             $this->RegisterInfo = new RegisterInfo();
             $this->RegisterInfo->deserialize($param["RegisterInfo"]);
+        }
+
+        if (array_key_exists("ApproverOption",$param) and $param["ApproverOption"] !== null) {
+            $this->ApproverOption = new ApproverOption();
+            $this->ApproverOption->deserialize($param["ApproverOption"]);
         }
     }
 }
