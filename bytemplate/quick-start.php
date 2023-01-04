@@ -1,13 +1,14 @@
 <?php
 require_once(__DIR__ . '/../vendor/autoload.php');
 require_once(__DIR__ . '/../api/CreateFlowByTemplateDirectly.php');
-require_once(__DIR__ . '/../api/DescribeFileUrls.php');
+require_once(__DIR__ . '/../api/file-upload-download/DescribeFileUrls.php');
 require_once(__DIR__ . '/./bytemplate.php');
 
 use TencentCloud\Common\Exception\TencentCloudSDKException;
 
+// 如果您选择使用模板发起合同可以参考此处。通过此部分代码可以发起一份单C签署合同，帮您快速了解文件发起所必要的流程。您可以在体验后根据实际情况
+// 修改参数，以满足业务场景的需求。
 try {
-
     // Step 1
     // 定义合同名
     $flowName = '我的第一个合同';

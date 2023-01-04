@@ -6,6 +6,8 @@ require_once(__DIR__ . '/./byfile.php');
 
 use TencentCloud\Common\Exception\TencentCloudSDKException;
 
+// 如果您选择使用文件发起合同可以参考此处。通过此部分代码可以发起一份单C签署合同，帮您快速了解文件发起所必要的流程。您可以在体验后根据实际情况
+// 修改参数，以满足业务场景的需求。
 try {
     // Step 1
     // 定义文件所在的路径

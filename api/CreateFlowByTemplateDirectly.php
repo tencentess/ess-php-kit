@@ -3,10 +3,10 @@
 require_once(__DIR__ . '/../vendor/autoload.php');
 require_once(__DIR__ . '/../config.php');
 require_once(__DIR__ . '/./Common.php');
-require_once(__DIR__ . '/./CreateFlow.php');
-require_once(__DIR__ . '/./CreateDocument.php');
-require_once(__DIR__ . '/./StartFlow.php');
-require_once(__DIR__ . '/./CreateSchemeUrl.php');
+require_once(__DIR__ . '/./flow-manage/CreateFlow.php');
+require_once(__DIR__ . '/./flow-manage/CreateDocument.php');
+require_once(__DIR__ . '/./flow-manage/StartFlow.php');
+require_once(__DIR__ . '/./flow-manage/CreateSchemeUrl.php');
 
 // 通过模板发起签署流程，并查询签署链接
 function CreateFlowByTemplateDirectly($operatorUserId, $flowName, $approvers)

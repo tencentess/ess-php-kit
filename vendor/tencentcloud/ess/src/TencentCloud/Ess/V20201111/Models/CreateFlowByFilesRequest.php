@@ -44,8 +44,8 @@ use TencentCloud\Common\AbstractModel;
 预览链接有效期300秒；
 
 注：如果使用“预览模式”，出参会返回合同预览链接 PreviewUrl，不会正式发起合同，且出参不会返回签署流程编号 FlowId；如果使用“非预览”，则会正常返回签署流程编号 FlowId，不会生成合同预览链接 PreviewUrl。
- * @method string getFlowDescription() 获取签署流程描述,最大长度1000个字符
- * @method void setFlowDescription(string $FlowDescription) 设置签署流程描述,最大长度1000个字符
+ * @method integer getPreviewType() 获取预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
+ * @method void setPreviewType(integer $PreviewType) 设置预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
  * @method integer getDeadline() 获取签署流程的签署截止时间。
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
  * @method void setDeadline(integer $Deadline) 设置签署流程的签署截止时间。
@@ -80,6 +80,10 @@ MobileCheck：手机号验证
 VerifyCheck: 人脸识别（默认）
 MobileCheck：手机号验证
 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
+ * @method string getFlowDescription() 获取签署流程描述,最大长度1000个字符
+ * @method void setFlowDescription(string $FlowDescription) 设置签署流程描述,最大长度1000个字符
+ * @method integer getSignBeanTag() 获取标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
+ * @method void setSignBeanTag(integer $SignBeanTag) 设置标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
  */
 class CreateFlowByFilesRequest extends AbstractModel
 {
@@ -128,9 +132,9 @@ class CreateFlowByFilesRequest extends AbstractModel
     public $NeedPreview;
 
     /**
-     * @var string 签署流程描述,最大长度1000个字符
+     * @var integer 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
      */
-    public $FlowDescription;
+    public $PreviewType;
 
     /**
      * @var integer 签署流程的签署截止时间。
@@ -178,6 +182,16 @@ MobileCheck：手机号验证
     public $ApproverVerifyType;
 
     /**
+     * @var string 签署流程描述,最大长度1000个字符
+     */
+    public $FlowDescription;
+
+    /**
+     * @var integer 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
+     */
+    public $SignBeanTag;
+
+    /**
      * @param UserInfo $Operator 调用方用户信息，userId 必填
      * @param string $FlowName 签署流程名称,最大长度200个字符
      * @param array $Approvers 签署参与者信息，最大限制50方
@@ -190,7 +204,7 @@ MobileCheck：手机号验证
 预览链接有效期300秒；
 
 注：如果使用“预览模式”，出参会返回合同预览链接 PreviewUrl，不会正式发起合同，且出参不会返回签署流程编号 FlowId；如果使用“非预览”，则会正常返回签署流程编号 FlowId，不会生成合同预览链接 PreviewUrl。
-     * @param string $FlowDescription 签署流程描述,最大长度1000个字符
+     * @param integer $PreviewType 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
      * @param integer $Deadline 签署流程的签署截止时间。
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
      * @param boolean $Unordered 发送类型：
@@ -208,6 +222,8 @@ false：有序签
 VerifyCheck: 人脸识别（默认）
 MobileCheck：手机号验证
 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
+     * @param string $FlowDescription 签署流程描述,最大长度1000个字符
+     * @param integer $SignBeanTag 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
      */
     function __construct()
     {
@@ -270,8 +286,8 @@ MobileCheck：手机号验证
             $this->NeedPreview = $param["NeedPreview"];
         }
 
-        if (array_key_exists("FlowDescription",$param) and $param["FlowDescription"] !== null) {
-            $this->FlowDescription = $param["FlowDescription"];
+        if (array_key_exists("PreviewType",$param) and $param["PreviewType"] !== null) {
+            $this->PreviewType = $param["PreviewType"];
         }
 
         if (array_key_exists("Deadline",$param) and $param["Deadline"] !== null) {
@@ -301,6 +317,14 @@ MobileCheck：手机号验证
 
         if (array_key_exists("ApproverVerifyType",$param) and $param["ApproverVerifyType"] !== null) {
             $this->ApproverVerifyType = $param["ApproverVerifyType"];
+        }
+
+        if (array_key_exists("FlowDescription",$param) and $param["FlowDescription"] !== null) {
+            $this->FlowDescription = $param["FlowDescription"];
+        }
+
+        if (array_key_exists("SignBeanTag",$param) and $param["SignBeanTag"] !== null) {
+            $this->SignBeanTag = $param["SignBeanTag"];
         }
     }
 }

@@ -3,9 +3,9 @@
 require_once(__DIR__ . '/../vendor/autoload.php');
 require_once(__DIR__ . '/../config.php');
 require_once(__DIR__ . '/./Common.php');
-require_once(__DIR__ . '/./UploadFiles.php');
-require_once(__DIR__ . '/./CreateFlowByFiles.php');
-require_once(__DIR__ . '/./CreateSchemeUrl.php');
+require_once(__DIR__ . '/./file-upload-download/UploadFiles.php');
+require_once(__DIR__ . '/./flow-manage/CreateFlowByFiles.php');
+require_once(__DIR__ . '/./flow-manage/CreateSchemeUrl.php');
 
 // 通过文件base64直接发起签署流程，返回flowid
 function CreateFlowByFileDirectly($operatorUserId, $fileBase64, $flowName, $approvers)

@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/../vendor/autoload.php');
 require_once(__DIR__ . '/../api/CreateFlowByFileDirectly.php');
-require_once(__DIR__ . '/../api/DescribeFileUrls.php');
+require_once(__DIR__ . '/../api/file-upload-download/DescribeFileUrls.php');
 
 use TencentCloud\Ess\V20201111\Models\ApproverInfo;
 use TencentCloud\Ess\V20201111\Models\Component;
@@ -121,6 +121,7 @@ function BuildComponent($componentPosX, $componentPosY, $componentWidth, $compon
     // 模板控件信息
     // 签署人对应的签署控件
     $component = new Component();
+    // 如何确定坐标请参考： https://doc.weixin.qq.com/doc/w3_AKgAhgboACgsf9NKAVqSOKVIkQ0vQ?scode=AJEAIQdfAAoz9916DRAKgAhgboACg
     // 参数控件X位置，单位pt
     $component->setComponentPosX($componentPosX);
     // 参数控件Y位置，单位pt
