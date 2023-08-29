@@ -5,7 +5,6 @@ use TencentCloud\Common\Exception\TencentCloudSDKException;
 
 // 取消一码多扫二维码调用样例
 try {
-    // 二维码id
     $qrCodeId = '********************************';
 
     $resp = CancelMultiFlowSignQRCode(Config::operatorUserId, $qrCodeId);

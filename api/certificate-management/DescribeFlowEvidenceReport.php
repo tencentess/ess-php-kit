@@ -6,11 +6,6 @@ require_once(__DIR__ . '/../Common.php');
 use TencentCloud\Ess\V20201111\Models\UserInfo;
 use TencentCloud\Ess\V20201111\Models\DescribeFlowEvidenceReportRequest;
 
-// DescribeFlowEvidenceReport 查询出证报告
-//
-// 官网文档：https://cloud.tencent.com/document/product/1323/83441
-//
-// 查询出证报告，返回报告 URL。
 function DescribeFlowEvidenceReport($operatorUserId, $reportId) {
     // 构造客户端调用实例
     $client = GetClientInstance(Config::secretId, Config::secretKey, Config::endPoint);

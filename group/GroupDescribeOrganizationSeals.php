@@ -7,11 +7,6 @@ use TencentCloud\Ess\V20201111\Models\UserInfo;
 use TencentCloud\Ess\V20201111\Models\DescribeOrganizationSealsRequest;
 use TencentCloud\Ess\V20201111\Models\Agent;
 
-// 查询企业电子印章
-//
-// 官网文档：https://cloud.tencent.com/document/product/1323/82453
-//
-// 查询企业印章的列表，需要操作者具有查询印章权限
 function DescribeOrganizationSeals($operatorUserId, $limit, $proxyOrganizationId) {
     // 构造客户端调用实例
     $client = GetClientInstance(Config::secretId, Config::secretKey, Config::endPoint);

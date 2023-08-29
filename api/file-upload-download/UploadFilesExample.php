@@ -14,7 +14,6 @@ try {
 
     $fileBase64 = chunk_split(base64_encode($contents));
 
-    // 文件名，最大长度不超过200字符
     $filename = 'test.pdf';
 
     $resp = UploadFiles(Config::operatorUserId, $fileBase64, $filename);

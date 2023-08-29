@@ -42,4 +42,4 @@ testdata是一个空白的pdf用于快速发起合同，测试。
 里面定义调用电子签企业版API需要的一些核心参数。
 
 ## 电子签企业版官网入口
-[腾讯电子签企业版](https://cloud.tencent.com/document/product/1323)
+[腾讯电子签开发者中心](https://qian.tencent.com/developers/company/overview)

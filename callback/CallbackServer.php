@@ -12,8 +12,7 @@ try {
     // 获取推送的body内容
     $data = file_get_contents("php://input");
 
-    // 解密后的明文，为json格式字符串，格式见
-    // https://cloud.tencent.com/document/product/1323/72309#.E5.9B.9E.E8.B0.83.E6.95.B0.E6.8D.AE.E6.9C.89.E5.93.AA.E4.BA.9B.E5.8F.82.E6.95.B0.E5.91.A2.EF.BC.9F
+    // 解密后的明文，为json格式字符串
     $plaintext = openssl_decrypt(base64_decode($data), $method, $key, OPENSSL_RAW_DATA, $iv);
 
     // 对json格式字符串进行编码

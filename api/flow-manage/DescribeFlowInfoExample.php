@@ -5,7 +5,7 @@ use TencentCloud\Common\Exception\TencentCloudSDKException;
 
 // 查询流程摘要调用样例
 try {
-    // 需要查询的流程ID
+
     $flowId = '********************************';
 
     $resp = DescribeFlowInfo(Config::operatorUserId, $flowId);

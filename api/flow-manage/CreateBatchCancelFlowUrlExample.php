@@ -9,7 +9,6 @@ try {
     $flowId1 = '********************************';
     $flowId2 = '********************************';
 
-    // 需要执行撤回的签署流程id数组，最多100个
     $flowIds = [];
     array_push($flowIds, $flowId1);
     array_push($flowIds, $flowId2);

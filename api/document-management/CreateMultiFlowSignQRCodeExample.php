@@ -5,9 +5,9 @@ use TencentCloud\Common\Exception\TencentCloudSDKException;
 
 // 创建一码多扫流程签署二维码调用样例
 try {
-    // 模板ID
+
     $templateId = '********************************';
-    // 签署流程名称，最大长度不超过200字符
+
     $flowName = '扫码签流程';
 
     $resp = CreateMultiFlowSignQRCode(Config::operatorUserId, $templateId, $flowName);

@@ -34,24 +34,15 @@ function BuildPersonApprover($name, $mobile)
     // 签署参与者信息
     // 个人签署方
     $approver = new ApproverInfo();
-    // 参与者类型：
-    // 0：企业
-    // 1：个人
-    // 3：企业静默签署
-    // 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。
     $approver->setApproverType(1);
-    // 本环节需要操作人的名字
     $approver->setApproverName($name);
-    // 本环节需要操作人的手机号
     $approver->setApproverMobile($mobile);
-    // sms--短信，none--不通知
     $approver->setNotifyType("sms");
 
     // 模板控件信息
     // 签署人对应的签署控件
     $component = BuildComponent(146.15625, 472.78125, 112, 40, 0, "SIGN_SIGNATURE", 1, '');
 
-    // 本环节操作人签署控件配置，为企业静默签署时，只允许类型为SIGN_SEAL（印章）和SIGN_DATE（日期）控件，并且传入印章编号
     $approver->SignComponents = [];
     array_push($approver->SignComponents, $component);
 
@@ -63,27 +54,16 @@ function BuildOrganizationApprover($name, $mobile, $organizationName)
 {
     // 签署参与者信息
     $approver = new ApproverInfo();
-    // 参与者类型：
-    // 0：企业
-    // 1：个人
-    // 3：企业静默签署
-    // 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。
-    // 企业签署方
     $approver->setApproverType(0);
-    // 本环节需要操作人的名字
     $approver->setApproverName($name);
-    // 本环节需要操作人的手机号
     $approver->setApproverMobile($mobile);
-    // 本环节需要企业操作人的企业名称
     $approver->setOrganizationName($organizationName);
-    // sms--短信，none--不通知
     $approver->setNotifyType("none");
 
     // 模板控件信息
     // 签署人对应的签署控件
     $component = BuildComponent(246.15625, 472.78125, 112, 40, 0, "SIGN_SEAL", 1, '');
 
-    // 本环节操作人签署控件配置，为企业静默签署时，只允许类型为SIGN_SEAL（印章）和SIGN_DATE（日期）控件，并且传入印章编号
     $approver->SignComponents = [];
     array_push($approver->SignComponents, $component);
 
@@ -95,19 +75,13 @@ function BuildServerSignApprover()
 {
     // 签署参与者信息
     $approver = new ApproverInfo();
-    // 参与者类型：
-    // 0：企业
-    // 1：个人
-    // 3：企业静默签署
-    // 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。
-    // 企业静默签署方
+
     $approver->setApproverType(3);
 
     // 模板控件信息
     // 签署人对应的签署控件
     $component = BuildComponent(346.15625, 472.78125, 112, 40, 0, "SIGN_SEAL", 1, Config::serverSignSealId);
 
-    // 本环节操作人签署控件配置，为企业静默签署时，只允许类型为SIGN_SEAL（印章）和SIGN_DATE（日期）控件，并且传入印章编号
     $approver->SignComponents = [];
     array_push($approver->SignComponents, $component);
 
@@ -121,28 +95,17 @@ function BuildComponent($componentPosX, $componentPosY, $componentWidth, $compon
     // 模板控件信息
     // 签署人对应的签署控件
     $component = new Component();
-    // 如何确定坐标请参考： https://doc.weixin.qq.com/doc/w3_AKgAhgboACgsf9NKAVqSOKVIkQ0vQ?scode=AJEAIQdfAAoz9916DRAKgAhgboACg
-    // 参数控件X位置，单位pt
+
     $component->setComponentPosX($componentPosX);
-    // 参数控件Y位置，单位pt
+
     $component->setComponentPosY($componentPosY);
 
-    // 参数控件宽度，单位pt
     $component->setComponentWidth($componentWidth);
-    // 参数控件高度，单位pt
+
     $component->setComponentHeight($componentHeight);
     // 控件所属文件的序号（取值为：0-N）
     $component->setFileIndex($fileIndex);
-    // 如果是 Component 控件类型，则可选类型为：
-    // TEXT - 单行文本
-    // MULTI_LINE_TEXT - 多行文本
-    // CHECK_BOX - 勾选框
-    // ATTACHMENT - 附件
-    // SELECTOR - 选择器
-    // 如果是 SignComponent 控件类型，则可选类型为：
-    // SIGN_SEAL - 签署印章控件，静默签署时需要传入印章id作为ComponentValue
-    // SIGN_DATE - 签署日期控件
-    // SIGN_SIGNATURE - 手写签名控件，静默签署时不能使用
+
     $component->setComponentType($componentType);
     // 参数控件所在页码，取值为：1-N
     $component->setComponentPage($componentPage);
